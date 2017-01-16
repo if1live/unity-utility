@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49ab732a309aae45aa0aa8837cd0a70, type: 3}
+  m_Name: BSO
+  m_EditorClassIdentifier: 
+  _id: 702
+  dbg: 0
+  Prefs:
+    _Buckets: ffffffffffffffff010000000400000005000000ffffffffffffffff
+    _HashCodes: 95ada563167911089e65e649c596540553fa7e0c54fa7e0c00000000
+    _Next: ffffffffffffffff00000000ffffffff020000000300000000000000
+    _Count: 6
+    _Version: 1004
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys: 95ada563167911889e65e6c9c596540553fa7e0c54fa7e0c00000000
+    _Values:
+    - ValueString: 
+      ValueFloat: 0
+      Type: 0
+    - ValueString: 
+      ValueFloat: 0
+      Type: 0
+    - ValueString: 
+      ValueFloat: 0
+      Type: 0
+    - ValueString: 
+      ValueFloat: 0
+      Type: 0
+    - ValueString: 
+      ValueFloat: 0
+      Type: 0
+    - ValueString: 
+      ValueFloat: 0
+      Type: 0
+    - ValueString: 
+      ValueFloat: 0
+      Type: 0
+  tags: []
+  Jump: 0
+  Target: {x: 0, y: 0, z: 0}
+  obj: {fileID: 0}
