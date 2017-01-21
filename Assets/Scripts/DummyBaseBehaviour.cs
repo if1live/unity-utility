@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using Vexe.Runtime.Types;
 
 namespace Assets.Scripts {
-    [DefineCategory("foo", Pattern = "^foo_")]
     [DefineCategory("bar", Pattern = "^bar_")]
+    [DefineCategory("foo", Pattern = "^foo_")]
     class DummyBaseBehaviour : BaseBehaviour {
         [Show]
         void PrintLog() {
@@ -19,7 +20,9 @@ namespace Assets.Scripts {
         public int foo_int = 0;
         public float foo_float = 0;
 
-        public int bar_int = 0;
-        public float bar_float = 0;
+        [iSlider(0, 10)]
+        public int bar_int = 3;
+        [fSlider(0, 1.0f)]
+        public float bar_float = 0.5f;
     }
 }

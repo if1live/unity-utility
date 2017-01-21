@@ -14,11 +14,13 @@ namespace Assets.Scripts {
         public float foo_float = 0;
 
         [Header("bar")]
-        public int bar_int = 0;
-        public float bar_float = 0;
+        public int bar_int = 3;
+        [Range(0, 1.0f)]
+        public float bar_float = 0.5f;
     }
 
 #if UNITY_EDITOR
+    [CanEditMultipleObjects]
     [CustomEditor(typeof(DummyMonoBehaviour))]
     class DummyMonoBehaviourEditor : UnityEditor.Editor {
         public override void OnInspectorGUI() {
