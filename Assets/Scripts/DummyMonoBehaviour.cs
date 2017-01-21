@@ -1,19 +1,27 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
+using System;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 namespace Assets.Scripts {
-    class DummyMonoBehaviour : MonoBehaviour {
+    interface IDummyContainer {}
+
+    class DummyMonoBehaviour : MonoBehaviour, IDummyContainer {
+        void Awake() {
+            foo_interface = this;
+        }
+
         public void PrintLog() {
             Debug.Log("method invoked - mono behaviour");
         }
 
         [Header("foo")]
-        public int foo_int = 0;
-        public float foo_float = 0;
+        public IDummyContainer foo_interface = null;
 
         [Header("bar")]
+        [Range(0, 10)]
         public int bar_int = 3;
         [Range(0, 1.0f)]
         public float bar_float = 0.5f;

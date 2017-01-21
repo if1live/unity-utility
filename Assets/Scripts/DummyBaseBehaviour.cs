@@ -1,11 +1,14 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using Vexe.Runtime.Types;
 
 namespace Assets.Scripts {
     [DefineCategory("bar", Pattern = "^bar_")]
     [DefineCategory("foo", Pattern = "^foo_")]
-    class DummyBaseBehaviour : BaseBehaviour {
+    class DummyBaseBehaviour : BaseBehaviour, IDummyContainer {
+        void Awake() {
+            foo_interface = this;
+        }
+
         [Show]
         void PrintLog() {
             Debug.Log("method invoked - base behaviour");
@@ -17,8 +20,7 @@ namespace Assets.Scripts {
             dLogFormat("{0} {1} {2}", "debug", "log", "+ format");
         }
 
-        public int foo_int = 0;
-        public float foo_float = 0;
+        public IDummyContainer foo_interface = null;
 
         [iSlider(0, 10)]
         public int bar_int = 3;
