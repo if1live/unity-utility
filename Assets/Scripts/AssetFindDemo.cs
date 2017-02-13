@@ -22,7 +22,7 @@ namespace Assets.Scripts {
 #if UNITY_EDITOR
             var founds = AssetDatabase.FindAssets("AssetFindDemo");
             foreach (var found in founds) {
-                var x = CustomAssetDatabase.GUIDToAssetPath(found);
+                var x = AssetDatabase.GUIDToAssetPath(found);
                 Debug.LogFormat("found : {0}", x);
             }
 #endif
