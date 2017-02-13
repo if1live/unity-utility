@@ -55,6 +55,6 @@ namespace Assets.Chiho {
             }
             return null;
         }
-    }
 #endif
+    }
 }
