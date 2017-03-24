@@ -8,7 +8,7 @@ using UnityEditor;
 
 namespace Assets.Chiho {
     public abstract class AbstractAssetAttribute : Attribute {
-        internal abstract void TryAssign(FieldInfo field, object obj);
+        protected abstract string CreateFileName(FieldInfo field);
 
         [System.Diagnostics.Conditional("UNITY_EDITOR")]
         internal static void ConnectMemberAssets<T>(object obj) where T : AbstractAssetAttribute {
@@ -24,12 +24,14 @@ namespace Assets.Chiho {
                 var prev = f.GetValue(obj);
 
                 if (IsNullValue(prev)) {
-                    attr.TryAssign(f, obj);
+                    var filename = attr.CreateFileName(f);
+                    var asset = attr.FindAsset(f.FieldType, filename);
+                    f.SetValue(obj, asset);
                 }
             }
         }
 
-        internal UnityEngine.Object FindAsset(Type t, string filename) {
+        UnityEngine.Object FindAsset(Type t, string filename) {
 #if UNITY_EDITOR
             var assetPath = FindAssetPath(filename);
             if (assetPath != null) {
@@ -43,7 +45,7 @@ namespace Assets.Chiho {
 #endif
         }
 
-        internal string FindAssetPath(string name) {
+        string FindAssetPath(string name) {
 #if UNITY_EDITOR
             // AssetDatabase 뒤질때는 확장자는 무시된다
             var filename = Path.GetFileNameWithoutExtension(name);
@@ -72,7 +74,7 @@ namespace Assets.Chiho {
             return null;
         }
 
-        internal static bool IsNullValue(object o) {
+        static bool IsNullValue(object o) {
             return (o == null || o.ToString() == "null");
         }
     }

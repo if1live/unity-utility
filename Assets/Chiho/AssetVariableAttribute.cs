@@ -9,21 +9,13 @@ namespace Assets.Chiho {
             this.ext = ext;
         }
 
-        [System.Diagnostics.Conditional("UNITY_EDITOR")]
         public static void ConnectMemberAssets(object obj) {
             ConnectMemberAssets<AssetVariableAttribute>(obj);
         }
 
-        internal override void TryAssign(FieldInfo field, object obj) {
+        protected override string CreateFileName(FieldInfo field) {
             var varName = field.Name;
-            var filename = CreateFileName(varName, ext);
-
-            var asset = FindAsset(field.FieldType, filename);
-            field.SetValue(obj, asset);
-        }
-
-        static string CreateFileName(string varName, string ext) {
-            if(ext == null || ext == "") {
+            if (ext == null || ext == "") {
                 return varName;
             } else if (ext.StartsWith(".")) {
                 return varName + ext;

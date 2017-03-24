@@ -14,9 +14,8 @@ namespace Assets.Chiho {
             ConnectMemberAssets<AssetNameAttribute>(obj);
         }
 
-        internal override void TryAssign(FieldInfo field, object obj) {
-            var asset = FindAsset(field.FieldType, v);
-            field.SetValue(obj, asset);
+        protected override string CreateFileName(FieldInfo field) {
+            return v;
         }
     }
 }
